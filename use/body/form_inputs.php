@@ -20,7 +20,8 @@
     <div class="main-select">
         <select required name="¿Tienes alguna inversión en la playa?">
             <option value="" disabled selected>¿Tienes alguna inversión en la playa?</option>
-            <option value="option_selection">Opción 1</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
         </select>
         <div></div>
     </div>
@@ -29,7 +30,8 @@
     <div class="main-select">
         <select required name="¿Presupuesto para invertir?">
             <option value="" disabled selected>¿Presupuesto para invertir?</option>
-            <option value="option_selection">Opción 1</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
         </select>
         <div></div>
     </div>
@@ -38,7 +40,8 @@
     <div class="main-select">
         <select required name="¿Plazo para invertir?">
             <option value="" disabled selected>¿Plazo para invertir?</option>
-            <option value="option_selection">Opción 1</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
         </select>
         <div></div>
     </div>
