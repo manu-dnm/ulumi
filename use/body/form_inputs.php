@@ -31,7 +31,10 @@
     <div class="main-select">
         <select required name="¿Presupuesto para invertir?">
             <option value="" disabled selected>¿Presupuesto para invertir?</option>
-            <option value="option_selection">Opción 1</option>
+            <option value="Menos de 650k MXN">Menos de 650k MXN</option>
+            <option value="Entre $650k y $1.7mdp">Entre $650k y $1.7mdp</option>
+            <option value="Entre $1.7mdp y $4.2mdp">Entre $1.7mdp y $4.2mdp</option>
+            <option value="Más de $4.2mdp">Más de $4.2mdp</option>
         </select>
         <div></div>
     </div>
@@ -40,7 +43,9 @@
     <div class="main-select">
         <select required name="¿Plazo para invertir?">
             <option value="" disabled selected>¿Plazo para invertir?</option>
-            <option value="option_selection">Opción 1</option>
+            <option value="Inmediatamente">Inmediatamente</option>
+            <option value="Dentro de 2 meses">Dentro de 2 meses</option>
+            <option value="Posterior a 2 meses">Posterior a 2 meses</option>
         </select>
         <div></div>
     </div>
