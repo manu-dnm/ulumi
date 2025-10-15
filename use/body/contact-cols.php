@@ -9,7 +9,7 @@
             </div>
             <div class="col">
                 <div data-animation="right" class="form-wrapper">
-                    <?php // include("use/body/footer_form.php") ?>
+                    <?php include("use/body/footer_form.php") ?>
                 </div>
             </div>
         </div>
