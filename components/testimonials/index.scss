@@ -1,0 +1,46 @@
+$testimonialShadow: 0px 5px 30px rgba(black, 0.1);
+$testimonialPadding: 2rem;
+$testimonialRadius: 1rem;
+
+$testimonialCardBG: white;
+$testimonialImgHeight: 40px;
+$testimonialNameFontSize: 20px;
+$testimonialDescriptionFontSize: 12px;
+$testimonialFontSize: 18px;
+
+.testimonial-card {
+    box-shadow: $testimonialShadow;
+    padding: $testimonialPadding;
+    border-radius: $testimonialRadius;
+    height: 100%;
+    background-color: $testimonialCardBG;
+
+    .user {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        img {
+            height: $testimonialImgHeight;
+            margin-right: 1rem;
+        }
+        .user-name {
+            font-size: $testimonialDescriptionFontSize;
+            span { 
+                font-weight: bold;
+                font-size: $testimonialNameFontSize;
+            }
+            @media #{$ipad} {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .testimonial-text {
+        font-size: $testimonialFontSize;
+        @media #{$ipad} {
+            font-size: $testimonialFontSize;
+        }
+    }
+}

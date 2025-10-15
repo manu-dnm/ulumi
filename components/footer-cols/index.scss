@@ -1,0 +1,159 @@
+$mode: dark; // dark or light
+$footerColsBgColor: #31343B;
+$footerColsTitleSize: 20px;
+$footerColsLastSectionBg: $footerColsBgColor;
+$gradientColorDarkFooter: darken($mainColor, 15%);
+$gradientColorLightFooter: $mainColor;
+
+
+.footer-cols {
+    background-color: $footerColsBgColor;
+    background-position: center;
+    background-size: cover;
+    z-index: 10;
+    position: relative;
+
+    footer {
+        padding: 5rem 0;
+    }
+
+    .footer-logo {
+        display: block;
+        margin-bottom: 2rem;
+        height: 60px;
+        img {
+            margin: 0 auto;
+        }
+    }
+
+    .menus-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        width: 60%;
+        max-width: 100%;
+        gap: 80px;
+        @media #{$ipad} {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            h3 {
+                text-align: center;
+            } 
+        }
+
+        & > div {
+            max-width: 240px;
+        }
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        a {
+            i {
+                font-size: 32px;
+                transition: all .2s;
+            }
+            &:hover {
+                i {
+                    color: $secondColor;
+                }
+            }
+        }
+    }
+
+    @if ( $mode == dark ) {
+        * {
+            color: white;
+        }
+    }
+    @else {
+        * {
+            color: $black;
+        }
+    }
+
+    &__cols {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        column-gap: 32px;
+        // border-top: 1px solid $secondColor;
+        // border-bottom: 1px solid $secondColor;
+        padding: 2rem 0;
+        @media #{$ipad} {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        & > div {
+            width: 100%;
+            max-width: 270px;
+            @media #{$ipad} {
+                margin: 0 auto;
+                margin-bottom: 2rem;
+            }
+            h3 {
+                font-size: $footerColsTitleSize;
+                margin-bottom: 1rem;
+                color: $secondColor;
+            }
+            .footer-cols-links-wrapper {
+                display: grid;
+                grid-template-columns: 1fr;
+                row-gap: 20px;
+                @media #{$ipad} {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;                    
+                }
+                a {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    @media #{$ipad} {
+                        text-align: center;
+                    }
+                    i {
+                        width: 20px;
+                        height: 20px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 0.5rem;
+                        margin-top: -2px;
+                    }
+                    &:hover {
+                        i {
+                            color: $secondColor;
+                        }
+                        span {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer-cols-last-section {
+    text-align: center;
+    // background-color: $footerColsLastSectionBg;
+    padding: 16px;
+    @if ( $mode == dark ) {
+        &, * {
+            color: white;
+        }
+    }
+    @else {
+        &, * {
+            color: $black;
+        }
+    }
+}

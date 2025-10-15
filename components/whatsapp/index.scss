@@ -1,0 +1,324 @@
+$whatsappGreen: #25d366;
+$brandColor: $whatsappGreen;
+$buttonColor: $whatsappGreen;
+$buttonColorHover: darken($buttonColor, 5%);
+$borderRadius: 8px;
+$borderInputColor: lighten($brandColor, 10%);
+
+.dnm-whatsapp-button-wrapper {
+    z-index: 1000000;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    button.dnm-whatsapp-button {
+        background-color: transparent;
+        border: 0;
+        background-color: $whatsappGreen;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 32px;
+        left: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: all 0.2s;
+        z-index: 99999;
+        padding: 0;
+
+        @media #{$ipad} {
+            bottom: 16px;
+        }
+
+        &:active {
+            background-color: darken($whatsappGreen, 10%);
+        }
+
+        &:hover {
+            &:before {
+                transform: scale(1.5);
+            }
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($whatsappGreen, 0.2);
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transform: scale(1);
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        i {
+            font-size: 36px;
+            color: white;
+            display: block;
+            z-index: 2;
+            margin-bottom: 2px;
+        }
+    }
+
+    .dnm-whatsapp-modal {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        display: none;
+        z-index: 10000;
+
+        &.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            animation: modalAnimation 0.2s;
+            padding: 36px 16px;
+            margin-bottom: 100px;
+            margin-right: 32px;
+            transform-origin: right bottom;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 16px;
+            box-shadow: 0px 20px 50px rgba(black, 0.2);
+            @media #{$ipad} {
+                margin-right: 16px;
+            }
+
+            h2 {
+                margin: 0;
+                font-size: 24px;
+                margin-bottom: 16px;
+                text-align: left;
+                font-family: $titleFont !important;
+                color: $brandColor;
+            }
+
+            form {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 16px;
+
+                .dnm-input.iti__tel-input {
+                    padding-left: 82px !important;
+                }
+
+                .dnm-input {
+                    padding: 16px;
+                    border-radius: $borderRadius;
+                    background-color: #f6f4f0;
+                    border: 1px solid transparent;
+                    font-size: 16px;
+                    outline: none;
+                    transition: all 0.2s;
+                    margin: 0;
+                    width: 100%;
+                    color: black;
+
+                    &:focus {
+                        background-color: white;
+                        box-shadow: 0px 0px 8px rgba($borderInputColor, 0.5);
+                        border-color: $borderInputColor;
+                    }
+                }
+
+                .dnm-button {
+                    width: 100%;
+                    padding: 16px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    background-color: $buttonColor;
+                    border: 0;
+                    color: white;
+                    border-radius: $borderRadius;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                    margin-top: 16px;
+                    border: 1px solid transparent;
+
+                    &:hover:not(:disabled) {
+                        box-shadow: 0px 0px 8px rgba($brandColor, 0.5);
+                        background-color: $buttonColorHover;
+                    }
+
+                    &:focus {
+                        box-shadow: 0px 0px 8px rgba($brandColor, 0.5);
+                    }
+
+                    &:active {
+                        background-color: darken($brandColor, 10%);
+                        box-shadow: 0px 0px 8px rgba($brandColor, 0.5);
+                    }
+
+                    &:disabled {
+                        background-color: #ccc;
+                        cursor: default;
+                        color: #888;
+
+                        &:hover {
+                            box-shadow: none;
+                        }
+                    }
+                }
+
+                .main-select {
+                    height: 52px;
+                    width: 100%;
+                    position: relative;
+
+                    &.icon {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+
+                        .icon-wrapper {
+                            position: relative;
+                            width: 45px;
+                            flex-shrink: 0;
+                            z-index: 2;
+                            border-right: 1px solid #e1e1e1;
+                            border-top-right-radius: 0;
+                            border-bottom-right-radius: 0;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+
+                    select {
+                        appearance: none;
+                        -webkit-appearance: none;
+                        border: 0;
+                        padding: 0;
+                        margin: 0;
+                        background-color: transparent;
+                        width: 100%;
+                        height: 100%;
+                        padding-left: 1rem;
+                        padding-right: 2.5rem;
+                        position: relative;
+                        z-index: 2;
+                        font-size: 16px;
+
+                        &:focus {
+                            outline: none;
+
+                            &+div {
+                                background-color: white;
+                                border-color: $brandColor;
+                                box-shadow: 0px 0px 6px rgba($brandColor, 0.5);
+                            }
+                        }
+                    }
+
+                    &:before {
+                        // content: '\25BE';
+                        position: absolute;
+                        top: 50%;
+                        right: 1rem;
+                        transform: translateY(-50%);
+                        z-index: 2;
+                        color: $brandColor;
+                    }
+
+                    & > div {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        z-index: 1;
+                        transition: all 0.2s;
+                        border-radius: $borderRadius;
+                        background-color: #f1f1f1;
+                        border: 1px solid transparent;
+                        font-size: 16px;
+                    }
+
+                    &.white-select {
+                        & > div {
+                            background-color: white;
+                        }
+                    }
+                }
+
+                .custom-section {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 16px;
+
+                    p {
+                        color: #808080;
+                        font-weight: bold;
+                        font-size: 14px;
+                        margin: 0;
+                    }
+
+                    .date-wrapper {}
+                }
+            }
+
+            &.error {
+                background-color: white;
+                border: 1px solid rgb(255, 173, 173);
+                color: #af1a1a;
+            }
+        }
+    }
+
+    &.right {
+        button.dnm-whatsapp-button {
+            left: unset;
+            right: 32px;
+            @media #{$ipad} {
+                right: 16px;
+            }
+        }
+
+        .dnm-whatsapp-modal {
+            .modal-content {
+                margin-left: auto;
+                animation: modalAnimationRight 0.2s;
+                @media #{$ipad} {
+                    margin-left: 16px;
+                }
+            }
+        }
+    }
+}
+
+@keyframes modalAnimation {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes modalAnimationRight {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}

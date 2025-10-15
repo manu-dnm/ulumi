@@ -1,0 +1,31 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name [DOMINIO];
+    root /var/www/[CARPETA];
+    index index.php index.html;
+
+    location / {
+        try_files $uri $uri/ @rewrite;
+    }
+
+    # Esta regla permite acceder a archivos como tudominio.com/contacto
+    # en lugar de tudominio.com/contacto.php
+    location @rewrite {
+        rewrite ^/(.*)$ /$1.php last;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        # ¡Verifica tu versión de PHP aquí!
+        fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    # Bloquea el acceso a archivos .htaccess
+    location ~ /\.ht {
+        deny all;
+    }
+}

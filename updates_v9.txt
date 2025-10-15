@@ -1,0 +1,7 @@
+* quitar $mainColorDark de colors y de footer scss
+* declara $CTA_NAME en brand_info
+* agregar commentario de business-email en form_inputs
+* Buscar la manera de automatizar el tamaño del main-select
+* Revisar tabs (para poder poner íconos)
+* Revisar footers
+* delete copy of form js

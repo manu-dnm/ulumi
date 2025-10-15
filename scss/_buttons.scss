@@ -1,0 +1,309 @@
+@import '../scss/mixins';
+
+// Colors
+$btnColor: $bntsColor;
+
+// $btnColorHover: lighten($btnColor, 10%);
+$btnColorHover: lighten($btnColor, 5%);
+
+// second Button
+$secondaryBtnColor: $secondColor;
+
+$customBtnColor: blue;
+
+// Font
+$btnFont: $mainFont;
+$btnFontWeight: 600;
+$btnFontColor: white;
+$btnFontColorHover: $btnFontColor;
+$btnFontSize: 1rem;
+$btnIconSize: 18px;
+$btnUppercase: false;
+
+// Shape
+$borderRadius: 0px;
+$btnPadding: 16px;
+$btnPaddingSlim: 8px;
+
+// Effects
+$shadow: 0px 3px 6px rgba(black, 0);
+
+.main-button {
+    background-color: $btnColor;
+    padding: $btnPadding 2rem;
+    min-width: 200px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: $shadow;
+    white-space: nowrap;
+    transition: all .2s;
+    width: fit-content;
+    border-radius: $borderRadius;
+    font-family: $btnFont;
+    border: 1px solid $btnColor;
+
+    &.slim {
+        padding: $btnPaddingSlim 2rem;
+        border-radius: 4px;
+        width: 100%;
+        span {
+            font-size: 16px;
+        }
+    }
+
+    span, i {
+        @include selection-disabled;
+    }
+
+    span {
+        color: $btnFontColor;
+        z-index: 1;
+        position: relative;
+        font-weight: $btnFontWeight;
+        font-size: $btnFontSize;
+        @if ( $btnUppercase == true ) {
+            text-transform: uppercase;
+        }
+    }
+
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 100%;
+        background-color: $btnColorHover;
+        transition: all .3s;
+    }
+
+    &:before {
+        left: -10%;
+        transform: skew(30deg);
+    }
+
+    &:after {
+        right: -10%;
+        transform: skew(30deg);
+    }
+
+    &:focus:not([disabled], .disabled),
+    &:active:not([disabled], .disabled) {
+        outline: none;
+        background-color: darken($btnColorHover, 5%);
+        box-shadow: 0px 3px 6px rgba($btnColor, 1);
+        &:before, &:after {
+            background-color: darken($btnColorHover, 5%);
+            width: 70%;
+        }
+    }
+
+    &:hover:not([disabled], .disabled) {
+        border-color: $btnColorHover;
+        transform: translateY(-4px);
+        box-shadow: 0px 3px 6px rgba($btnColor, 1);
+        &:before, &:after {
+            width: 70%;
+        }
+        i {
+            margin-left: 1rem;
+        }
+        span, i {
+            color: $btnFontColorHover;
+        }
+    }
+
+
+    i {
+        z-index: 1;
+        position: relative;
+        transition: all .2s;
+        color: $btnFontColor;
+        margin-bottom: 1px;
+        font-size: $btnIconSize;
+        margin-left: 0.5rem;
+    }
+
+    &.secondary-button {
+        background-color: $secondaryBtnColor;
+        border-color: $secondaryBtnColor;
+
+        &:before, &:after {
+            background-color: darken($secondaryBtnColor, 10%);
+        }
+        &:hover:not([disabled], .disabled), &:focus:not([disabled], .disabled), &:active:not([disabled], .disabled) {
+            border-color: $secondaryBtnColor;
+            box-shadow: 0px 3px 6px rgba($secondaryBtnColor, 1);
+            &:before, &:after {
+                background-color: darken($secondaryBtnColor, 10%);
+            }
+            span, i {
+                color: $black;
+            }
+        }
+        span, i {
+            color: $black;
+        }
+    }
+
+    &.custom-color {
+        background-color: $customBtnColor;
+        border-color: $customBtnColor;
+
+        &:before, &:after {
+            background-color: darken($customBtnColor, 10%);
+        }
+        &:hover:not([disabled], .disabled), &:focus:not([disabled], .disabled), &:active:not([disabled], .disabled) {
+            border-color: $customBtnColor;
+            box-shadow: 0px 3px 6px rgba($customBtnColor, 1);
+            &:before, &:after {
+                background-color: darken($customBtnColor, 10%);
+            }
+        }
+    }
+
+    &.ghost-button {
+        background-color: transparent;
+        border: 1px solid $btnColor;
+
+        span, i {
+            color: $btnColor;
+        }
+
+        &:before, &:after {
+            background-color: lighten($btnColor, 40%);
+        }
+
+        &:hover:not([disabled], .disabled), &:focus:not([disabled], .disabled), &:active:not([disabled], .disabled) {
+            span, i {
+                color: $btnColor;
+            }
+            &:before, &:after {
+                background-color: lighten($btnColor, 40%);
+            }
+        }
+
+        &.white-button {
+            border-color: white;
+            box-shadow: 0px 3px 6px rgba(white, 1);
+            span, i {
+                color: white;
+            }
+
+            &:hover {
+                border-color: $btnColor;
+            }
+        }
+
+        &.secondary-button {
+            border-color: $secondaryBtnColor;
+            
+            span, i {
+                color: $secondColor;
+            }
+            &:before, &:after {
+                background-color: lighten($secondaryBtnColor, 28%);
+            }
+            &:hover:not([disabled], .disabled), &:focus:not([disabled], .disabled), &:active:not([disabled], .disabled) {
+                box-shadow: 0px 3px 6px rgba($secondaryBtnColor, 1);
+                span, i {
+                    color: $secondColor;
+                }
+                &:before, &:after {
+                    background-color: lighten($secondColor, 28%);
+                }
+            }
+        }
+
+        &.custom-color {
+            border-color: $customBtnColor;
+            
+            span, i {
+                color: $customBtnColor;
+            }
+            &:before, &:after {
+                background-color: lighten($customBtnColor, 45%);
+            }
+            &:hover:not([disabled], .disabled), &:focus:not([disabled], .disabled), &:active:not([disabled], .disabled) {
+                box-shadow: 0px 3px 6px rgba($customBtnColor, 1);
+                span, i {
+                    color: $customBtnColor;
+                }
+                &:before, &:after {
+                    background-color: lighten($customBtnColor, 45%);
+                }
+            }
+        }
+    }
+
+    &:disabled,
+    &.disabled {
+        cursor: default;
+        background-color: $mediumGray1;
+        border-color: $mediumGray1;
+        box-shadow: none;
+
+        &.ghost-button {
+            background-color: $lightGray1;
+            border-color: $mediumGray1;
+            box-shadow: none;
+        }
+
+        span, i {
+            color: $mediumGray2;
+        }
+
+        &:hover {
+
+            span,
+            i {
+                color: $mediumGray2;
+            }
+        }
+    }
+
+    &.loading:disabled {
+        position: relative;
+        cursor: default;
+        background-color: $btnColor;
+        border-color: $btnColor;
+        i {
+            opacity: 0;
+            display: none;
+        }
+
+        span {
+            color: transparent;
+            display: block;
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                border: 3px solid $darkGray3;
+                border-color: white transparent white transparent;
+                animation: lds-dual-ring 1.2s linear infinite;
+            }
+        }
+
+    }
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

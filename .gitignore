@@ -1,0 +1,36 @@
+# Ignorar archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de configuración del entorno
+.env
+.env.*
+
+# Ignorar cachés y logs
+*.log
+cache/
+tmp/
+storage/
+vendor/
+
+# Composer
+/vendor/
+/composer.lock
+
+# PHPUnit
+.phpunit.result.cache
+
+# IDEs y editores
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignorar archivos de despliegue o temporales
+*.bak
+*.tmp
+*.swp
+
+# Ignorar archivos generados
+/public/storage
+/storage/*.key

@@ -1,0 +1,76 @@
+$tabsCentered: false; // boolean -> true or false
+
+// TABS FUNCTIONALLITY 
+.tabs-container {
+    margin-top: 4rem;
+}
+
+.tabs-container .tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+    
+    @if( $tabsCentered ) {
+        justify-content: center;
+    }
+
+    @media #{$ipad} {
+        overflow: scroll;
+        justify-content: flex-start;
+        width: calc(100% + 2rem);
+        margin-left: -1rem;
+        padding: 0 1rem;
+    }
+
+    .tab {
+        border: 1px solid $black;
+        padding: 1.5rem;
+        transition: all .2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: 200px;
+
+        span {
+            font-size: 18px;
+            text-align: center;
+        }
+        img {
+            filter: brightness(0) saturate(0);
+            opacity: 0.8;
+            height: 65px;
+        }
+        &:hover, &.active {
+            background-color: $black;
+            span {
+                color: $secondColor;
+            }
+            img {
+                filter: none;
+            }
+        }
+    }
+}
+
+.tabs-container .tab-content {
+    display: none;
+}
+
+.tabs-container .tab-content.active {
+    display: block;
+    animation: justOpacity 1s;
+}
+
+.tabs-content {
+    h3 {
+        margin-bottom: 1rem;
+        font-size: 38px;
+    }
+    p {
+        font-size: 24px;
+        line-height: 1.6;
+    }
+}

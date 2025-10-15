@@ -1,0 +1,241 @@
+h1 {
+    text-transform: uppercase;
+    font-weight: 100;
+    font-style: normal;
+    span {
+        font-size: 100px;
+        font-weight: 900;
+        font-style: italic;
+        @media #{$ipad} {
+            font-size: 80px;
+        }
+    }
+}
+
+h2 {
+    text-transform: uppercase;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 34px;
+    @media #{$ipad} {
+        font-size: 32px;
+    }
+    span {
+        font-size: 78px;
+        font-weight: 900;
+        font-style: italic;
+        @media #{$ipad} {
+            font-size: 58px;
+        }
+    }
+    &.small {
+        span {
+            font-size: 60px;
+            @media #{$ipad} {
+                font-size: 40px;
+            }
+        }
+    }
+}
+
+.divider {
+    height: 3px;
+    width: 80%;
+    max-width: 400px;
+    margin: 2rem 0;
+    background-image: linear-gradient(90deg,rgba(30, 30, 23, 0) 0%, rgba(30, 30, 23, 0.7) 50%, rgba(30, 30, 23, 0) 100%);;
+    &.white {
+        background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);;
+    }
+}
+
+.main-section.snd-color {
+    background-color: $secondColor;
+}
+
+.title-centered {
+    h2 {
+        text-align: center;
+    }
+    .divider {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &.white {
+        * {
+            color: white;
+        }
+    }
+}
+
+.icons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    @media #{$ipad} {
+        grid-template-columns: 1fr;
+        margin-top: 40px;
+    }
+    img {
+        max-width: 190px;
+        @media #{$ipad} {
+            margin: 0 auto;
+        }
+    }
+}
+
+.main-container.black {
+    background-color: $black;
+    margin-top: 6rem;
+    padding: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    @media #{$ipad} {
+        padding: 60px 2rem;
+        flex-direction: column;
+    }
+
+    * {
+        color: white;
+    }
+
+    h2 {
+        span {
+            font-size: 64px;
+            @media #{$ipad} {
+                font-size: 50px;
+            }
+        }
+        @media #{$ipad} {
+            text-align: center;
+        }
+        margin-bottom: 2rem;
+    }
+    h3 {
+        font-size: 2rem;
+        @media #{$ipad} {
+            text-align: center;
+        }
+    }
+    p {
+        font-size: 20px;
+        @media #{$ipad} {
+            text-align: center;
+        }
+    }
+
+    .divider {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    img.icons {
+        max-width: 200px;
+        @media #{$ipad} {
+            margin-bottom: 4rem;
+        }
+    }
+
+
+
+    & > div:first-child {
+        max-width: 470px;
+    }
+}
+
+.main-section.gray {
+    background-color: #31343B;
+}
+
+.disponibilidad-section {
+    .cols {
+        margin-top: 4rem;
+        @media #{$ipad} {
+            gap: 0;
+        }
+        .col {
+            .card-disp {
+                background-color: #eee;
+                text-align: center;
+                padding: 4rem 0;
+                background-image: url('assets/disp-1.png');
+                height: 300px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+
+                h2 {
+                    font-size: 34px;
+                    color: white;
+                    transition: all .2s;
+                    transform: translateY(50px);
+                    span {
+                        font-size: 50px;
+                    }
+                }
+
+                .cta-wrapper {
+                    transition: all .2s;
+                    transform: translateY(113px);
+                    opacity: 0;
+                }
+                &:hover {
+                    h2 {
+                        transform: translateY(0);
+                    }
+                    .cta-wrapper {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+            }
+            
+            &:last-child {
+                .card-disp {
+                    background-image: url('assets/disp-2.png');
+                }
+            }
+        }
+    }
+}
+
+.tabs-villas-section {
+    .tabs-container {
+        .tabs {
+            .tab {
+                border: 0;
+                padding: 1rem;
+                font-size: 18px;
+                background-color:transparent;
+                font-weight: bold;
+                &:hover {
+                    background-color: rgba($secondColor, 0.5);
+                }
+                &.active {
+                    background-color: $secondColor;
+                }
+            }
+        }
+
+        .tab-text {
+            h3 {
+                font-size: 36px;
+                font-weight: normal;
+                span {
+                    font-size: 60px;
+                    font-weight: bold;
+                    font-style: italic;
+                }
+            }
+            ul {
+                font-size: 18px;
+                padding-left: 40px;
+                line-height: 1.6;
+            }
+        }
+    }
+}

@@ -1,0 +1,98 @@
+$faqIconSize: 24px;
+$faqIconColor: $mainColor;
+$faqQuestionSize: 16px;
+$faqQuestionSizeMobile: 16px;
+
+$faqAnswerSize: 16px;
+
+$faqRadius: 0px;
+$faqPadding: 12px 24px;
+$faqMaxWidth: 700px;
+
+$faqBgColor: white;
+$faqFontColor: $black;
+$faqBgColorActive: $mainColor;
+$faqFontColorActive: white;
+
+$ansBgColor: #f9f9f9;
+$ansColor: black;
+
+.faqs {
+    max-width: $faqMaxWidth;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0px;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    @media #{$ipad} {
+        grid-template-columns: 1fr;
+    }
+
+    .faq {
+        border-radius: $faqRadius;
+        display: block;
+        text-align: left;
+        width: 100%;
+        border: 1px solid $mediumGray1;
+
+        .faq-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: $faqPadding;
+            background-color: $faqBgColor;
+            h3 {
+                font-size: $faqQuestionSize;
+                width: 80%;
+                font-family: $mainFont;
+                font-weight: normal;
+                color: $faqFontColor;
+                @media #{$ipad} {
+                    font-size: $faqQuestionSizeMobile;
+                }
+            }
+            span {
+                font-size: $faqIconSize;
+                color: $faqIconColor;
+            }
+        }
+
+        .faq-answer {
+            font-size: $faqAnswerSize;
+            display: none;
+            animation: faqAnimation .1s;
+            transform-origin: 0 0;
+            padding: $faqPadding;
+            background-color: $ansBgColor;
+            p {
+                color: $ansColor;
+            }
+        }
+    
+        &.active {
+            .faq-head {
+                background-color: $faqBgColorActive;
+                h3, span {
+                    color: $faqFontColorActive;
+                }
+            }
+            .faq-answer {
+                display: block;
+            }
+        }
+    }
+}
+
+@keyframes faqAnimation {
+    from {
+        transform-origin: top left;
+        transform: scale(.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

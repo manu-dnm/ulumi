@@ -1,0 +1,9 @@
+# Habilitar mod_rewrite
+RewriteEngine On
+
+# Si la solicitud no tiene la extensión .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Reescribir las URLs para que no muestren la extensión .php
+RewriteRule ^([a-zA-Z0-9_-]+)$ $1.php [L]

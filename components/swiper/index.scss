@@ -1,0 +1,70 @@
+$btnSize: 60px;
+$iconSize: 24px;
+$btnColor: $bntsColor;
+$swiperBulletColor: $mainColor;
+
+
+.swiper-container {
+    
+    .swiper-pagination {
+        position: relative;
+        margin-top: 1rem;
+
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            &.swiper-pagination-bullet-active {
+                background-color: $swiperBulletColor;
+            }
+        }
+    }
+    .swiper-btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
+        &.only-mobile {
+            display: none;
+            @media #{$ipad} {
+                display: flex;
+            }
+        }
+
+        .swiper-btn {
+            width: $btnSize;
+            height: $btnSize;
+            transition: all .2s;
+            background-color: transparent;
+            color: $btnColor;
+            border: 1px solid $btnColor;
+            border-radius: 50%;
+            font-size: $iconSize;
+
+            &.white-btn {
+                border-color: white;
+                color: white;
+                &:hover:not(.swiper-button-disabled) {
+                    background-color: white;
+                    color: $mainColor;
+                }
+            }
+            
+            &.swiper-button-disabled {
+                cursor: default;
+                border-color: $mediumGray2;
+                color: $mediumGray2;
+            }
+
+            &:hover:not(.swiper-button-disabled) {
+                background-color: $btnColor;
+                color: white;
+            }
+            
+            &:last-child {
+                margin-left: 16px;
+            }
+        } 
+    }
+}

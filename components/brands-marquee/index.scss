@@ -1,0 +1,64 @@
+// SCSS for marquee
+$space-between: 40px;
+$speed: 2000s;
+$speedMobile: 250s;
+$padding: 4rem 0;
+$marqueeHeight: 56px;
+
+.marquee-wrapper {
+    padding: $padding;
+    overflow: hidden;
+
+    .marquee {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 $space-between;
+        animation: marquee $speed infinite linear;
+        
+        @media #{$ipad} {
+            animation: marquee $speedMobile infinite linear;
+        }
+
+        &:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-img {
+            margin-right: $space-between;
+            flex-shrink: 0;
+            height: $marqueeHeight;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &.right {
+        .marquee {
+            justify-content: flex-end;
+            animation-name: marqueeRight;
+            @media #{$ipad} {
+                animation-name: marqueeRight;
+            }
+        }
+    }
+}
+
+@keyframes marquee {
+    0% {
+        margin-left: 0;
+    }
+    100% {
+        margin-left: -10000%
+    }
+}
+
+@keyframes marqueeRight {
+    0% {
+        margin-right: 0;
+    }
+    100% {
+        margin-right: -10000%
+    }
+}

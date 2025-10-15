@@ -1,0 +1,91 @@
+$background-img: '/assets/hero.png';
+$background-img-mobile: $background-img;
+$textColor: white;
+
+// OVERLAY
+$overlayBg: rgba(black, 0.2);
+
+//Sizing
+$contentMaxWidth: 1900px;
+
+// Paddings
+$heroGeneralPadding: 0px;
+$heroGeneralPaddingMobile: 0px;
+$heroPaddingTop: calc($navbarOffset + 60px);
+$heroPadding: $heroGeneralPadding;
+$heroPaddingTopMobile: calc($navbarOffsetMobile + 60px);
+$heroPaddingMobile: $heroGeneralPaddingMobile;
+
+// Header
+$headerSize: 60px;
+$headerSizeMobile: 32px;
+$headerColor: $textColor;
+
+// Paragraph
+$paragraphSize: 24px;
+$paragraphSizeMobile: 16px;
+$paragraphColor: $textColor;
+
+
+
+.hero {
+    padding: $heroPadding 0;
+    padding-top: $heroPaddingTop;
+    background-image: url($background-img);
+    background-size: cover;
+    background-position: bottom right;
+    position: relative;
+
+    &:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $overlayBg;
+    }
+
+    @media #{$ipad} {
+        padding: $heroPaddingMobile 0;
+        padding-top: $heroPaddingTopMobile;
+        background-image: url($background-img-mobile);
+        background-position: top right;
+    }
+
+    .main-container {
+        position: relative;
+        .hero-content {
+            max-width: $contentMaxWidth;
+            h1 {
+                color: $headerColor;
+                font-size: $headerSize;
+                @media #{$ipad} {
+                    font-size: $headerSizeMobile;
+                }
+            }
+
+            p {
+                font-size: $paragraphSize;
+                color: $paragraphColor;
+                line-height: 1.6;
+                @media #{$ipad} {
+                    font-size: $paragraphSizeMobile;
+                }
+            }
+
+            h1, p {
+                @media #{$ipad} {
+                    text-align: center;
+                }
+            }
+            .main-button {
+                @media #{$ipad} {
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}

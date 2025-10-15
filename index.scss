@@ -1,0 +1,29 @@
+//@import '~intl-tel-input/build/css/intlTelInput.css';
+@import 'scss/font-awesome';
+@import 'scss/fonts';
+@import 'scss/colors';
+@import 'scss/vars';
+@import 'scss/site_settings';
+@import 'scss/buttons';
+@import 'scss/inputs';
+@import 'scss/animations';
+@import 'scss/modals';
+@import 'scss/privacy';
+
+// Components imports
+@import 'components/navbar';
+@import 'components/hero';
+@import 'components/brands-marquee';
+@import 'components/swiper';
+@import 'components/faqs';
+@import 'components/tabs';
+@import 'components/form';
+@import 'components/footer-cols';
+@import 'components/youtube-video';
+@import 'components/whatsapp';
+@import 'components/testimonials';
+@import 'components/contact-cols';
+@import 'components/ugc';
+
+// Custom Styles
+@import 'scss/custom-styles';

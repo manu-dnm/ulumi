@@ -1,0 +1,84 @@
+@keyframes toggleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(.8);
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes toggleAnimationLeft {
+    0% {
+        opacity: 0;
+        transform: scale(.8);
+        transform-origin: top left;
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes nonStatic {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    80% {
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes justOpacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes leftAnimation {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes rightAnimation {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bottomAnimationMargin {
+    0% {
+        opacity: 0;
+        margin-bottom: -100px;
+    }
+    100% {
+        opacity: 1;
+        margin-bottom: 0px;
+    }
+}

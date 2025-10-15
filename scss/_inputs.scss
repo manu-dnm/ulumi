@@ -1,0 +1,540 @@
+/* Variables */
+$inputsMainColor: $secondColor;
+$radius: 0px;
+$textareaRadius: 0px;
+$inputsBg: white;
+$inputBgFocus: white;
+$inputsFontSize: 16px;
+$placeholderColor: #999;
+$labelColor: rgba($black, 0.6);
+$labelFont: $mainFont;
+$labelWeight: normal;
+$gap: 20px;
+$inputPadding: 16px 16px;
+$inputBorderColor: white;
+
+.main-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $gap;
+
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media #{$ipad} {
+            flex-direction: column-reverse;
+            justify-content: center;
+        }
+
+        p {
+            font-size: 11px;
+            color: $mediumGray2;
+        }
+
+        .main-button {
+            margin: 0;
+            margin-left: auto;
+
+            @media #{$ipad} {
+                margin: 0 auto;
+                margin-bottom: 32px;
+            }
+        }
+    }
+}
+
+input,
+select,
+textarea {
+    font-size: 1rem;
+    font-family: $mainFont; /* asumiendo que existe esta variable */
+}
+
+/* Select principal */
+.main-select {
+    height: 54.5px;
+    width: 100%;
+    position: relative;
+
+    &.icon {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        .icon-wrapper {
+            position: relative;
+            width: 45px;
+            flex-shrink: 0;
+            z-index: 2;
+            border-right: 1px solid darken($lightGray1, 5%);
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    select {
+        appearance: none;
+        -webkit-appearance: none;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        padding-left: 1rem;
+        padding-right: 2.5rem;
+        position: relative;
+        z-index: 2;
+
+        &[disabled] {
+            color: $mediumGray1;
+            background-color: $lightGray1;
+        }
+
+        &:focus {
+            outline: none;
+
+            & + div {
+                background-color: $inputsBg;
+                border-color: transparent;
+                box-shadow: 0px 0px 6px rgba($inputsMainColor, 0.5);
+            }
+        }
+
+        &.invalid {
+            &:focus {
+                & + div {
+                    box-shadow: 0px 0px 6px rgba($errorColor, 0.5);
+                }
+            }
+
+            & + div {
+                border: 1px solid $errorColor;
+            }
+
+            & ~ span.error {
+                display: block;
+                top: -32px;
+            }
+        }
+    }
+
+    &:before {
+        font-family: 'Font Awesome 6 Pro';
+        font-weight: 600;
+        content: '\f0d7';
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        z-index: 2;
+        color: $black;
+    }
+
+    & > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        border-radius: $radius;
+        background-color: white;
+        border: 2px solid rgba($inputBorderColor, 0.2);
+        transition: all 0.2s;
+    }
+
+    &.white-select {
+        & > div {
+            background-color: $inputsBg;
+        }
+    }
+}
+
+/* Wrapper general de inputs */
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+
+    label {
+        margin-bottom: 0.5rem;
+        font-family: $labelFont;
+        font-weight: $labelWeight;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        color: $labelColor;
+
+        span.info-text {
+            color: $mediumGray1;
+            font-weight: normal;
+            font-size: 12px;
+            margin-left: auto;
+            margin-top: auto;
+            display: block;
+        }
+    }
+
+    span.error {
+        font-size: 12px;
+        position: absolute;
+        bottom: 2px;
+        right: 30px;
+        color: $errorColor;
+        font-weight: normal;
+        display: none;
+
+        * {
+            color: $errorColor;
+        }
+    }
+
+    &.show-error {
+        position: relative;
+        label {
+            color: $errorColor;
+        }
+        input, .main-select div {
+            border-color: $errorColor;
+            border-width: 2px;
+        }
+        .main-select:before {
+            color: $errorColor;
+        }
+
+        &:after {
+            content: 'Por favor, corrige este campo';
+            position: absolute;
+            bottom: 4px;
+            right: 8px;
+            text-align: right;
+            font-size: 12px;
+            color: $errorColor;
+        }
+
+        &:has(input[business-email]):after {
+            content: 'Por favor, ingresa un correo corporativo.'
+        }
+    }
+}
+
+textarea.main-input {
+    resize: none;
+    display: block;
+    height: 120px;
+    border-radius: $textareaRadius;
+    background-color: $inputsBg;
+
+    &:disabled {
+        color: $mediumGray1;
+    }
+}
+
+/* Input principal */
+.main-input, .iti__search-input {
+    border: 0;
+    background-color: $inputsBg;
+    /* Usamos la nueva variable para la mayoría de los casos */
+    padding: $inputPadding;
+    width: 100%;
+    border-radius: $radius;
+    transition: all 0.2s;
+    border: 2px solid rgba($inputBorderColor, 0.2);
+    appearance: none;
+    font-size: $inputsFontSize;
+
+    &.slim {
+        // Mantiene el padding reducido si se usa la clase "slim"
+        padding: 8px 1rem;
+    }
+
+    &.no-border {
+        border: none;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &[type='number'] {
+        -moz-appearance: textfield;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: transparent;
+        box-shadow: 0px 0px 6px rgba($inputsMainColor, 0.5);
+        background-color: $inputBgFocus;
+    }
+
+    &.invalid:not(.not-error) {
+        border: 1px solid $errorColor;
+
+        &:focus {
+            box-shadow: 0px 0px 6px rgba($errorColor, 1);
+        }
+
+        & + span.error {
+            display: block;
+        }
+    }
+
+    &::placeholder {
+        color: $placeholderColor;
+    }
+
+    &:disabled {
+        color: $mediumGray1;
+    }
+}
+
+/* Radio buttons */
+.main-input-radio {
+    display: none;
+
+    & + label {
+        cursor: pointer;
+        font-family: $labelFont;
+        font-weight: $labelWeight;
+
+        .input {
+            width: 20px;
+            height: 20px;
+            border: 1px solid $mediumGray2;
+            border-radius: 50%;
+            position: relative;
+
+            &:before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: block;
+                content: '';
+                background-color: $inputsMainColor;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                transition: all 0.2s;
+            }
+        }
+    }
+
+    &:checked + label {
+        .input {
+            border-color: $inputsMainColor;
+
+            &:before {
+                width: calc(100% - 8px);
+                height: calc(100% - 8px);
+            }
+        }
+    }
+}
+
+/* Checkbox */
+.main-checkbox {
+    input {
+        display: none;
+
+        &:checked + label {
+            color: $inputsMainColor;
+
+            &:before {
+                content: '\f14a';
+                color: $inputsMainColor;
+                font-weight: bold;
+                animation: checkedAnimation 0.2s;
+            }
+        }
+
+        &:disabled + label {
+            color: $mediumGray1;
+
+            &:before {
+                color: $mediumGray2;
+                font-weight: 600;
+            }
+        }
+    }
+
+    label {
+        font-family: $labelFont;
+        font-weight: $labelWeight;
+        font-size: 1rem; /* Ajusta si quieres */
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none;   /* Safari */
+        -khtml-user-select: none;    /* Konqueror HTML */
+        -moz-user-select: none;      /* Old versions of Firefox */
+        -ms-user-select: none;       /* Internet Explorer/Edge */
+        user-select: none;
+        cursor: pointer;
+        color: $mediumGray2;
+
+        &:before {
+            display: block;
+            content: '\f0c8';
+            font-family: 'Font Awesome 6 Pro';
+            font-weight: 100;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+/* Switch */
+.main-switch {
+    margin-bottom: 0.5rem;
+
+    &.mb-1 {
+        margin-bottom: 1rem;
+    }
+
+    input {
+        display: none;
+
+        & + label {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            font-family: $labelFont;
+            font-weight: $labelWeight;
+
+            span {
+                display: block;
+                flex-shrink: 0;
+                white-space: nowrap;
+
+                &.big-switch {
+                    font-size: 1.25rem;
+                }
+            }
+
+            .switch {
+                width: 42px;
+                height: 22px;
+                border-radius: 100000px;
+                background-color: $lightGray1;
+                position: relative;
+                transition: all 0.2s;
+                flex-shrink: 0;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 18px;
+                    height: 18px;
+                    background-color: white; /* Mantenemos blanco para el “botón” del switch */
+                    top: 2px;
+                    left: 2px;
+                    border-radius: 50%;
+                    transition: all 0.2s;
+                }
+            }
+        }
+
+        &:checked + label {
+            .switch {
+                background-color: $inputsMainColor;
+
+                &:after {
+                    left: 22px;
+                }
+            }
+        }
+    }
+}
+
+/* Two options */
+.input-wrapper.two-options-wrapper {
+    .options-wrapper {
+        display: flex;
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+
+        input {
+            display: none;
+
+            &:checked + label {
+                background-color: $inputsMainColor;
+                color: $labelColor;
+            }
+        }
+
+        label {
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            background-color: $lightGray1;
+            font-weight: normal;
+            margin: 0;
+            transition: all 0.2s;
+            cursor: pointer;
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none;   /* Safari */
+            -khtml-user-select: none;    /* Konqueror HTML */
+            -moz-user-select: none;      /* Old versions of Firefox */
+            -ms-user-select: none;       /* Internet Explorer/Edge */
+            user-select: none;
+            font-family: $labelFont;
+            font-weight: $labelWeight;
+        }
+    }
+}
+
+.inputs-wrapper {
+    display: grid;
+    gap: 1rem;
+
+    &-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    &-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    &-4 {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    @media #{$ipad} {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes checkedAnimation {
+    0% {
+        transform: scale(1);
+    }
+    80% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,45 @@
+// .iti__search-input tiene estilos de _inputs.scss
+
+.iti {
+    width: 100%;
+    color: $black;
+}
+
+.iti__selected-country-primary {
+    padding: 0 16px;
+    border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+}
+
+.iti__search-input {
+    padding: 12px;
+    margin-bottom: 1rem;
+}
+
+.iti--inline-dropdown .iti__dropdown-content {
+    padding: 1rem;
+    padding-bottom: 0;
+    border: 1px solid $lightGray2;
+    border-radius: $radius;
+    z-index: 100;
+    transform-origin: 0 0;
+    animation: toggleAnimationLeft .2s;
+}
+.form-error-message {
+    display: none;
+    margin-top: 24px;
+    background-color: $errorColor;
+    color: white;
+    padding: 32px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+
+.form-wrapper {
+    background-color: $secondColor;
+    padding: 3rem;
+    @media #{$ipad} {
+        padding: 40px 1rem;
+    }
+}
